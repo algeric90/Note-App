@@ -3,6 +3,7 @@ import '../styles/style.css'
 import List from "./NotesList";
 import NoteInput from "./NoteInput";
 import NoteSearch from "./NoteSearch";
+import logo from '../img/logo.png'
 import {getInitialData } from '../utils/index';
 
 export default class App extends React.Component{
@@ -66,7 +67,7 @@ export default class App extends React.Component{
             <>
                 <div className="note-app__header">
                     <div className="note-app__header-navbrand">
-                        <img src="/img/logo.png" alt="navbrand-logo"  width="32" height="32"/>
+                        <img src={logo} alt="navbrand-logo"  width="32" height="32"/>
                         <h1>Note Apps</h1>
                     </div>
                     <NoteSearch onChange={this.searchHandler}/>
