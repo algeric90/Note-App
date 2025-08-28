@@ -25,11 +25,12 @@ export default class App extends React.Component{
     }
     archiveHandler(id) {
         const updatedNotes = this.state.notes.map(note =>
-            note.id === id ? { ...note, archived: true } : note
+            note.id === id ? { ...note, archived: !note.archived } : note
         );
 
         this.setState({ notes: updatedNotes });
     }
+
     addHandler({title,body}){
         this.setState((pervState) =>{
             return {
@@ -90,4 +91,4 @@ export default class App extends React.Component{
     }
 }
 
-// add search custom layout
+

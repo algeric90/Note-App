@@ -17,7 +17,7 @@ export default class NoteInput extends React.Component{
     titleHandler(event){
         this.setState(() => {
             return {
-                title: event.target.value,
+                title: event.target.value.slice(0,50),
             }
         });
     }
@@ -31,6 +31,10 @@ export default class NoteInput extends React.Component{
     submitHandler(event){
         event.preventDefault();
         this.props.addNote(this.state);
+        this.setState({
+            title: "",
+            body: ""
+        });
     }
 
 
@@ -40,7 +44,8 @@ export default class NoteInput extends React.Component{
                 <h2 className="note-input__title">Tambah Note</h2>
                 <form className="note-input__body" onSubmit={this.submitHandler}>
                     {
-                        50-this.state.title.length!==0 ? <p className="note-input__title-char-limit">Sisa karakter : {50-this.state.title.length}</p> : <p className="note-input__title-char-limit">Judul telah mencapai batas karakter</p>
+                        50-this.state.title.length!==0 ? <p className="note-input__title-char-limit">Sisa karakter : {50-this.state.title.length}</p> 
+                        : (<p className="note-input__title-char-limit">Judul telah mencapai batas karakter</p>)
                     }
                     <input type="text" placeholder="Masukkan judul" value={this.state.title} onChange={this.titleHandler}/>
                     <textarea rows="12" placeholder="Masukkan catatan" value={this.state.body} onChange={this.bodyHandler}/>
